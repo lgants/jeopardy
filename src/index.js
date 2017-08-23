@@ -7,6 +7,7 @@ import rootReducer from './reducers';
 import App from './components/App';
 import Category from './components/Category';
 import './index.css';
+import Root from './containers/Root';
 
 const store = createStore(rootReducer);
 
@@ -14,8 +15,10 @@ ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={App} />
-          <Route exact path="/category" component={Category} />
+          <Root>
+            <Route exact path="/" component={App} />
+            <Route exact path="/category" component={Category} />
+          </Root>
         </Switch>
       </BrowserRouter>
   </Provider>,

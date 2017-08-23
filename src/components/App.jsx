@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setCategories } from '../actions';
+import { setCategories, pickCategory } from '../actions';
 
 
 class App extends Component {
@@ -15,13 +15,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <h2>Jeopardy</h2>
         {
           this.props.categories.map(category => {
             return (
               <div key={category.id}>
-                <Link to="/category"><h4>{category.title}</h4></Link>
+                <Link
+                  to="/category"
+                  onClick={() => this.props.pickCategory(category)}
+                  ><h4>{category.title}</h4></Link>
               </div>
             )
           })
@@ -32,7 +35,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return { categories: state }
+  return { categories: state.categories }
 }
 
-export default connect(mapStateToProps, { setCategories })(App);
+export default connect(mapStateToProps, { setCategories, pickCategory })(App);

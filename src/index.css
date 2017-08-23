@@ -1,4 +1,23 @@
-body {
+.container {
   text-align: center;
-  margin-top: 5%;
+}
+
+.clue {
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+.text-hidden {
+  visibility: hidden;
+}
+
+.text-visible {
+  animation-name: fade-in;
+  animation-duration: 1s;
+  visibility: visible;
+}
+
+@keyframes fade-in {
+  from { opacity: 0 }
+  to { opacity: 100 }
 }
